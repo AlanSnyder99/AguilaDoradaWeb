@@ -14,10 +14,10 @@ namespace AguilaDoradaWeb.Controllers
     {
         myContext ctx = new myContext();
         PasajeServicio pasajeServicio = new PasajeServicio();
-
+        List<Cliente> pasajerosDelViaje = new List<Cliente>();
         public ActionResult Index()
         {
-         
+            Session.Clear();
             return View();
         }
 
@@ -74,7 +74,6 @@ namespace AguilaDoradaWeb.Controllers
         {
             var listadoAsientos = ctx.PlantillaHorizontalGet(Id, vehiculoId, recorridoId, idOrigen, idDestino);
 
-
             ViewData["recorridoId"] = recorridoId;
             ViewData["idOrigen"] = idOrigen;
             ViewData["idDestino"] = idDestino;
@@ -85,16 +84,10 @@ namespace AguilaDoradaWeb.Controllers
 
         }
 
-        public ActionResult cargarPasajeros()
-        {
-
-            ViewBag.listadoAsientos = Session["listaAsientos"];
-
-            return View();
-        }
 
         public void guardarAsientos([FromBody]ListaAsientosDto asientos)
         {
+            Session.Remove("listaAsientos");
 
             List<int> listadoAsientos = asientos.asientos_id;
 
@@ -102,31 +95,84 @@ namespace AguilaDoradaWeb.Controllers
 
         }
 
-        public ActionResult buscarClientes(Pasajero pasajero)
+        public ActionResult cargarPasajeros()
         {
-            int totalPasajeros = pasajero.dni.Count;
+            
 
-            List<Cliente> Totalclientes = pasajeServicio.buscarCliente(pasajero);
+           // ViewBag.pasajerosDelViaje = Session["pasajerosDelViaje"];
 
-            if (Totalclientes == null)
-            {
-                ViewBag.clientesACargar = totalPasajeros;
-            }
-            else
-            {
-                int totalPasajerosCargar = totalPasajeros - Totalclientes.Count;
-
-                ViewBag.clientesACargar = totalPasajerosCargar;
-                ViewBag.clientes = Totalclientes;
-            }
-
+            ViewBag.listadoAsientos = Session["listaAsientos"];
 
             return View();
         }
 
-    
+        public ActionResult buscarClientes(int dni)
+        {
+            //   int totalPasajeros = pasajero.dni.Count;
+            // List<Cliente> pasajerosDelViaje = new List<Cliente>();
+            //int clienteProcedure = ctx.ClienteDNIGet(dni);
+            Cliente cliente = pasajeServicio.buscarCliente(dni);
 
-        public ActionResult Pagar(Pasajero pasajeros)
+            if (cliente == null)
+            {
+                
+                return View("buscarClientes"); //ES DONDE SE CARGA EL CLIENTE
+            }
+            else
+            {
+                if (Session["pasajerosDelViaje"] != null)
+                {
+                    List<Cliente> pasajerosDelViaje = (List<Cliente>)Session["pasajerosDelViaje"];
+                    pasajerosDelViaje.Add(cliente);
+                    Session["pasajerosDelViaje"] = pasajerosDelViaje;
+                }
+                else
+                {
+                    pasajerosDelViaje.Add(cliente);
+                    Session["pasajerosDelViaje"] = pasajerosDelViaje;
+                }
+                
+   
+
+                ViewBag.pasajerosDelViaje = Session["pasajerosDelViaje"];
+                ViewBag.listadoAsientos = Session["listaAsientos"];
+                return View("cargarPasajeros");
+            }
+
+
+          
+        }
+
+           public ActionResult cargarCliente(Cliente clienteACargar)
+        {
+            clienteACargar.Alta = DateTime.Now;
+            clienteACargar.TipoDocumentoId = 1;
+
+            pasajeServicio.guardarCliente(clienteACargar);
+
+            Cliente cliente = pasajeServicio.buscarCliente(clienteACargar.Documento.Value);
+
+            if(Session["pasajerosDelViaje"] != null)
+            {
+                List<Cliente> pasajerosDelViaje = (List<Cliente>)Session["pasajerosDelViaje"];
+                pasajerosDelViaje.Add(cliente);
+                Session["pasajerosDelViaje"] = pasajerosDelViaje;
+            }
+            else
+            {
+                pasajerosDelViaje.Add(cliente);
+                Session["pasajerosDelViaje"] = pasajerosDelViaje;
+            }
+
+            ViewBag.pasajerosDelViaje = Session["pasajerosDelViaje"];
+            ViewBag.listadoAsientos = Session["listaAsientos"];
+            return View("cargarPasajeros");
+        }
+
+
+
+
+        public ActionResult Pagar()
         {
 
            

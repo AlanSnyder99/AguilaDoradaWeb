@@ -1,0 +1,215 @@
+﻿
+@{
+    ViewBag.Title = "seleccionarAsientos";
+    int i = 0;
+    int fila = 0;
+    int piso = 0;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Aguila Dorada</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+    <!-- Custom styles for this template -->
+    <link href="~/Content/css/one-page-wonder.min.css" rel="stylesheet" />
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <script src="~/Content/js/jquery-3.4.1.min.js"></script>
+    <script src="~/Content/js/jquery-ui.js"></script>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Aguila Dorada</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Log In</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="masthead text-center text-white">
+        <div class="masthead-content">
+            <div class="container">
+                <h3 class="masthead-heading mb-0">Seleccione Asientos</h3>
+                   
+                        <table>
+
+                            <tbody>
+                                <tr>
+
+                                    @foreach (var item in ViewBag.listadoAsientos)
+                                    {
+                                        if (i == 0)
+                                        {
+                                            fila = item.Columna;
+                                            piso = item.Piso;
+                                            i++;
+
+                                         
+                                       @: <tr><td colspan="8">Piso Numero @item.Piso</td></tr>
+                                    }
+
+
+
+                                    if (item.Piso != piso)
+                                    {
+                                        @:<tr><td colspan="8">Piso Numero @item.Piso</td></tr>
+
+
+
+
+                                    }
+                                    if (item.Columna == fila)
+                                    {
+                                        @:<td>
+                                                if (item.AsientoId != null && item.Distribucion != null)
+                                                {
+                                                    @: <div class="color">
+
+                                                        <input style="position:absolute; height:20px; width:20px;" class="asientoId" asientos_id="@item.AsientoId" id="asientoId" type="checkbox"  value="@item.AsientoId" onchange="validacion(this)" />
+                                                        <img style="height:40px; width:60px;" src="@item.Imagen" />
+
+
+                                                    @: </div>
+                                                }
+                                                else
+                                                {
+                                                    @: <div>
+
+
+                                                        <img style="height:40px; width:60px;" src="@item.Imagen" />
+                                                    @: </div>
+                                                }
+
+
+                                            @:</td>
+
+
+                                        }
+                                        else
+                                        {
+                                        @:</tr><tr>
+                                            @:<td>
+                                                @:
+                                                <img style="height:40px; width:60px;" src="@item.Imagen" />
+                                            @:</td>
+
+
+                                            fila = item.Columna;
+                                            piso = item.Piso;
+
+
+                                        }
+
+
+                                    }
+
+
+
+                                </tr>
+                           
+                            </tbody>
+
+                        </table>
+                            
+
+                        <input type="button" id="siguiente" value="Siguiente" />
+
+            </div>
+        </div>
+        <div class="bg-circle-1 bg-circle"></div>
+        <div class="bg-circle-2 bg-circle"></div>
+        <div class="bg-circle-3 bg-circle"></div>
+        <div class="bg-circle-4 bg-circle"></div>
+    </header>
+                <div class="container">
+
+               
+                    
+
+
+
+                </div>
+    <script>
+
+           
+ $('input[type=checkbox]').on('change', function (e) {
+    if ($('input[type=checkbox]:checked').length > 5) {
+        $(this).prop('checked', false);
+        alert("Maximo 5 pasajeros");
+    }
+});
+
+        var asientos = [];
+       
+
+        $("#color").click(function () {
+            $(this).css('background', 'red');
+        });
+
+        $("#siguiente").click(function () {
+            $.each($(".asientoId"), function (i, item) {
+
+                if ($(item).prop("checked")) {
+                    asientos.push($(item).attr("asientos_id"));
+                }
+
+               
+    });
+              asientos = JSON.stringify({
+                 'asientos_id': asientos
+            });
+            console.log(asientos);
+
+            $.ajax({
+                 type: 'POST',
+                url: '@Url.Action("guardarAsientos","Home")',
+                contentType: 'application/json; charset=utf-8',
+               // dataType: "json",
+                data: asientos,
+                //data: JSON.stringify(asientos),
+                success: function (data) {
+                    
+                    window.location.href = '@Url.Action("cargarPasajeros", "Home")';
+                },
+                error: function (xhr, status, error) {
+                    alert("Error");
+                }
+            });
+        
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>
+

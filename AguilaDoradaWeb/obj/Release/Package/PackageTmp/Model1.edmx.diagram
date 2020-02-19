@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b0b400a942d84f3683454267b5dccb24" Name="Diagram1">
+        <EntityTypeShape EntityType="aguiladbModel.Agencia" Width="1.5" PointX="8.25" PointY="36.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Application" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.ApplicationTree" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Asiento" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Cajas" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Carroceria" Width="1.5" PointX="0.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Categoria" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Chofer" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Cliente" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.ClientesEnco" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Configuracion" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.CuentasBancarias" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.CuentasBancariasDepo" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Desdoblamiento" Width="1.5" PointX="7.5" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.dtproperties" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Empleado" Width="1.5" PointX="8.25" PointY="42.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Empresa" Width="1.5" PointX="12.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Estructura" Width="1.5" PointX="7.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.GastosDetalle" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Group" Width="1.5" PointX="8.25" PointY="46.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.HojaDeRuta" Width="1.5" PointX="14.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.HojaDeRutaMD" Width="1.5" PointX="14.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Kilos" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Linea" Width="1.5" PointX="8.25" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Liquidaciones" Width="1.5" PointX="15.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Liquidaciones2" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.LiquidacionesEnco" Width="1.5" PointX="16.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Localidad" Width="1.5" PointX="6" PointY="43.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.LogImpVent" Width="1.5" PointX="16.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Logs" Width="1.5" PointX="15.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Logs2" Width="1.5" PointX="17.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.LowCost" Width="1.5" PointX="17.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Marca" Width="1.5" PointX="0.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.MercadoPago" Width="1.5" PointX="17.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Novedades" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Ocupacion" Width="1.5" PointX="10.5" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Pais" Width="1.5" PointX="1.5" PointY="43.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Parada" Width="1.5" PointX="8.25" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.PCS" Width="1.5" PointX="18.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Permission" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.PermissionType" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Provincia" Width="1.5" PointX="3.75" PointY="43" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Rango" Width="1.5" PointX="10.5" PointY="37.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.RangoEnco" Width="1.5" PointX="0.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.RangoExceso" Width="1.5" PointX="19.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.RangoFacturas" Width="1.5" PointX="19.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.RangoRecibos" Width="1.5" PointX="19.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.RangoRemitos" Width="1.5" PointX="15.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.RangosHuecos" Width="1.5" PointX="17.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Recorrido" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Rel_Group_Permission" Width="1.5" PointX="10.5" PointY="46.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Rel_Reserva_Asiento" Width="1.5" PointX="7.5" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Rel_Tapa_Asiento" Width="1.5" PointX="19.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Reserva" Width="1.5" PointX="5.25" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Servicio" Width="1.5" PointX="10.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.ServicioEfectivo" Width="1.5" PointX="5.25" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.ServicioPred" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Sessions" Width="1.5" PointX="12.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Sexo" Width="1.5" PointX="20.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.sysdiagrams" Width="1.5" PointX="21.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Tapadas" Width="1.5" PointX="21.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Tarifa" Width="1.5" PointX="13.5" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.TarifaBolsas" Width="1.5" PointX="21.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.TarifaExceso" Width="1.5" PointX="21.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.TarifaSeguro" Width="1.5" PointX="19.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Tarifat" Width="1.5" PointX="21.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Tarjetas" Width="1.5" PointX="22.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.TarjetasMovimientos" Width="1.5" PointX="22.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Temporada" Width="1.5" PointX="14.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Ticket" Width="1.5" PointX="10.5" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.TicketFacturas" Width="1.5" PointX="16.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.TicketLib" Width="1.5" PointX="0.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Tipo" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.TipoDocumento" Width="1.5" PointX="23.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.TipoGasto" Width="1.5" PointX="23.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.TipoServicio" Width="1.5" PointX="10.5" PointY="35.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Trayecto" Width="1.5" PointX="12.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.TrayectoTemp" Width="1.5" PointX="23.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.User" Width="1.5" PointX="10.5" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.UserReg" Width="1.5" PointX="23.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Usuarios" Width="1.5" PointX="23.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.ValidaComisiones" Width="1.5" PointX="24.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Vehiculo" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Venta" Width="1.5" PointX="8.25" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.VentaFacturas" Width="1.5" PointX="18.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Visitas" Width="1.5" PointX="20.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Zonas" Width="1.5" PointX="25.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.AsientoT" Width="1.5" PointX="25.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Computadoras" Width="1.5" PointX="25.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.ErrorJava" Width="1.5" PointX="12.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Listados" Width="1.5" PointX="25.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.OcuTemp" Width="1.5" PointX="25.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.Sesiones" Width="1.5" PointX="22.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.ListadoComputadoras" Width="1.5" PointX="25.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.ListadoComputadorasPorUsuario" Width="1.5" PointX="26.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.ListadoIniciosDeSesionHoy" Width="1.5" PointX="27.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.ServiciosOfrecidos" Width="1.5" PointX="27.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.vCtaCte" Width="1.5" PointX="27.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.vEmpresaOriDes" Width="1.5" PointX="27.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.vLiqAConf" Width="1.5" PointX="27.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.vLiquidaciones" Width="1.5" PointX="27.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.vVehiculoFecha" Width="1.5" PointX="27.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.vVentas" Width="1.5" PointX="0.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.vVentas2" Width="1.5" PointX="28.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.vVentas3" Width="1.5" PointX="14.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.vVentasBol" Width="1.5" PointX="16.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.vVentasDesc" Width="1.5" PointX="18.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.vwBajanxServicio" Width="1.5" PointX="24.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="aguiladbModel.vwSubenxServicio" Width="1.5" PointX="26.75" PointY="28.75" IsExpanded="true" />
+        <AssociationConnector Association="aguiladbModel.FK_Rango_Agencia" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_User_Agencia" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Application_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Asiento_Vehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Desdoblamiento_Asiento" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Desdoblamiento_Asiento1" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Estructura_Asiento" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Ocupacion_Asiento" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Rel_Reserva_Asiento_Asiento" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Vehiculo_Carroceria" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Vehiculo_Categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Rel_Reserva_Asiento_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Ticket_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Desdoblamiento_ServicioEfectivo" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Desdoblamiento_ServicioEfectivo1" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Desdoblamiento_Ticket" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Empleado_Localidad" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Estructura_Tipo" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Estructura_Vehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Rel_Group_Permission_Group" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Servicio_Linea" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Tarifa_Linea" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Ticket_Linea" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Localidad_Provincia" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Vehiculo_Marca" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Ocupacion_ServicioEfectivo" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Provincia_Pais" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Rel_Recorrido_Parada_Parada" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Tarifa_Parada" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Tarifa_Parada1" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Ticket_Parada" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Ticket_Parada1" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_User_Parada" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_User_Parada1" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Rel_Group_PermissionType_PermissionType" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Servicio_Recorrido" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Tarifa_Recorrido" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Trayecto_Recorrido" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Rel_Reserva_Asiento_Reserva" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Rel_Reserva_Asiento_ServicioEfectivo" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Servicio_Vehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_ServicioEfectivo_Vehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Ticket_ServicioEfectivo" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.FK_Ticket_Venta" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.Rel_Empleado_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.Rel_Linea_TipoServicio" ManuallyRouted="false" />
+        <AssociationConnector Association="aguiladbModel.Rel_User_Group" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

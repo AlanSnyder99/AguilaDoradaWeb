@@ -22,33 +22,47 @@ namespace AguilaDoradaWeb.Models.Servicios
 
         }
 
-        public List<Cliente> buscarCliente(Pasajero pasajero)
+        public void guardarClientes(List<Cliente> listaClientesCargados)
         {
-            List<Cliente> Totalclientes = new List<Cliente>();
-
-            foreach (int dni in pasajero.dni)
+            foreach(Cliente cliente in listaClientesCargados)
             {
-                //Cliente cliente = ctx.Cliente.SingleOrDefault(x => x.Documento == dni  );
-                // var clientes = (from c in ctx.Cliente where c.Documento == dni select c);
+                ctx.Cliente.Add(cliente);
+                ctx.SaveChanges();
+            }
+        }
+        public void guardarCliente(Cliente clienteACargar)
+        { 
+                ctx.Cliente.Add(clienteACargar);
+                ctx.SaveChanges();
+        }
 
-                Cliente cliente = ctx.Cliente.First(x => x.Documento == dni);
+        public Cliente buscarCliente(int dni)
+        {
+          //  Cliente ClienteBuscado = new Cliente();
 
+            Cliente cliente = ctx.Cliente.FirstOrDefault(x => x.Documento == dni);
+        
 
                 if (cliente != null)
                 {
+                    cliente.Apellido = cliente.Apellido ?? "";
+                    cliente.Domicilio = cliente.Domicilio ?? "";
+                    cliente.Email = cliente.Email ?? "";
+                    cliente.passwd = cliente.passwd ?? "";
+                    cliente.Telefono = cliente.Telefono ?? "";
+                    cliente.LocalidadId = cliente.LocalidadId ?? 0;
+                    cliente.SexoId = cliente.SexoId ?? 0;
+                    cliente.FechaNacimiento = cliente.FechaNacimiento ?? DateTime.Now;
 
-                    Totalclientes.Add(cliente);
+
+
                 }
                 else
                 {
-
+                return null;
                 }
     
-            }
-
-                //List<Cliente> Totalclientes = (from c in ctx.Cliente where pasajero.dni.Contains.(c.Documento) select c).ToList();
-
-                return Totalclientes;
+                return cliente;
 
         }
 

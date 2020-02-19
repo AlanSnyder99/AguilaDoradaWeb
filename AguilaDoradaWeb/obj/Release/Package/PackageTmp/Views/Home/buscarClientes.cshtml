@@ -1,0 +1,134 @@
+﻿
+@{
+   
+     int numero = 0;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Aguila Dorada</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+    <!-- Custom styles for this template -->
+    <link href="~/Content/css/one-page-wonder.min.css" rel="stylesheet" />
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <script src="~/Content/js/jquery-3.4.1.min.js"></script>
+    <script src="~/Content/js/jquery-ui.js"></script>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Aguila Dorada</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Log In</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="masthead text-center text-white">
+        <div class="masthead-content">
+            <div class="container">
+                <h3 class="masthead-heading mb-0">Cargar datos de Pasajeros</h3>
+                <br />
+
+
+                @if (ViewBag.clientes != null)
+                {
+            <form method="post" action="/Home/buscarClientes">
+                @foreach (Cliente cliente in ViewBag.clientes)
+                {
+
+                <div class="form-group">
+                    <h3>Pasajero @cliente.Nombre  @cliente.Apellido</h3>
+                    <p id="carga"></p>
+                    <input class="form-control" type="number" id="dni" name="dni" value="@cliente.Documento" readonly />
+                </div>
+
+
+                }
+            </form>
+                }
+                else
+                {
+
+                }
+
+                @if(ViewBag.clientesACargar != null)
+                {
+
+                    <form method="post" action="/Home/buscarClientes">
+                        @for (int i = 0; i < ViewBag.clientesACargar; i++)
+                        {
+                            int pasajero = numero++;
+
+
+                        <div class="form-group">
+                            <h5>Pasajero N°: @numero</h5>
+                            <p id="carga"></p>
+                            <input placeholder="DNI" class="form-control" type="number" id="dni" name="dni" required />
+
+                            <input placeholder="Nombre" class="form-control" type="text" id="nombre" name="nombre" required />
+                            <input placeholder="Apellido" class="form-control" type="text" id="apellido" name="apellido" required />
+                            <input placeholder="Fecha de Nacimiento" class="form-control" type="datetime-local" id="fechaNacimiento" name="fechaNacimiento" required />
+                            <input placeholder="Domicilio" class="form-control" type="text" id="domicilio" name="domicilio" required />
+                            <input placeholder="Email" class="form-control" type="email" id="email" name="email" required />
+                            <input placeholder="Telefono" class="form-control" type="number" id="telefono" name="telefono" required />
+                        </div>
+
+                        }
+                        <button type="submit" id="buscar" class="btn btn-success">Cargar</button>
+                    </form>
+                } else
+                {
+
+                }
+                </div>
+        </div>
+        <div class="bg-circle-1 bg-circle"></div>
+        <div class="bg-circle-2 bg-circle"></div>
+        <div class="bg-circle-3 bg-circle"></div>
+        <div class="bg-circle-4 bg-circle"></div>
+    </header>
+
+    <script>
+
+    </script>
+
+    <footer class="py-5 bg-black">
+        <div class="container">
+            <p class="m-0 text-center text-white small">Copyright &copy; Aguila Dorada 2019</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+</body>
+
+</html>

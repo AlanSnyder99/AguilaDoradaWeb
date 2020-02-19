@@ -4,6 +4,19 @@
 
     ViewBag.Title = "cargarPasajeros";
     int numero = 0;
+    int totalClientes;
+
+    if(ViewBag.pasajerosDelViaje == null)
+    {
+        totalClientes = ViewBag.listadoAsientos.Count;
+    }
+    else
+    {
+        totalClientes = ViewBag.listadoAsientos.Count - ViewBag.pasajerosDelViaje.Count;
+    }
+
+
+
 }
 
 
@@ -56,28 +69,63 @@
     </nav>
     <header class="masthead text-center text-white">
         <div class="masthead-content">
+
+
+
             <div class="container">
-                <h3 class="masthead-heading mb-0">Cargar DNI de Pasajeros</h3>
-                <br />
-                <form method="post" action="/Home/buscarClientes">
-                    @foreach (int asiento in ViewBag.listadoAsientos)
+                <div class="row">
+                    @if (ViewBag.listadoAsientos == null)
                     {
-                        int pasajero = numero++;
-                  
 
-                        <div class="form-group">
-                            <h5>Pasajero @numero</h5>
-                            <p id="carga"></p>
-                            <input placeholder="DNI" class="form-control" type="number" id="dni" name="dni" required />
-                        </div>
-                    
-                        <input type="hidden" value="@asiento" />
                     }
-                    <button type="submit" id="buscar" class="btn btn-success">Buscar</button>
-
-                </form>
+                    else
+                    {
+                        for (int i = 0; i < totalClientes; i++)
+                        {
+                            <h2>Ingrese DNI </h2>
+                            <form method="post" action="/Home/buscarClientes">
+                                <input placeholder="DNI" class="form-control" type="number" id="dni" name="dni" required />
+                                <button type="submit" id="buscar" class="btn btn-success">Buscar</button>
+                            </form>
+                        };
+                    }
+                </div>
 
             </div>
+
+
+            <div class="container">
+                <div class="row">
+                    @if (ViewBag.pasajerosDelViaje == null)
+                    {
+
+                    }
+                    else
+                    {
+                        foreach (Cliente cliente in ViewBag.pasajerosDelViaje)
+                        {
+                            <h5>@cliente.Documento </h5>
+                            <br>
+                            <h5>@cliente.Nombre </h5>
+                            <br>
+                            <h5>@cliente.Apellido </h5>
+                            <br>
+                            <br><br />
+                        };
+                    }
+
+                    @if (totalClientes == 0)
+                    {
+                        <br>
+                        <br>
+                        <div>
+                            @Html.ActionLink("Continuar", "Pagar", "Home")
+                        </div>
+                    }
+                </div>
+
+            </div>
+             @Html.ActionLink("Cancelar", "Index", "Home")
         </div>
         <div class="bg-circle-1 bg-circle"></div>
         <div class="bg-circle-2 bg-circle"></div>
