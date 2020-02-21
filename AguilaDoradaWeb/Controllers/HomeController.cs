@@ -15,6 +15,8 @@ namespace AguilaDoradaWeb.Controllers
         myContext ctx = new myContext();
         PasajeServicio pasajeServicio = new PasajeServicio();
         List<Cliente> pasajerosDelViaje = new List<Cliente>();
+        ObjetoVenta objetoVenta = new ObjetoVenta();
+
         public ActionResult Index()
         {
             Session.Clear();
@@ -46,7 +48,7 @@ namespace AguilaDoradaWeb.Controllers
 
             Parada paradaDestino = pasajeServicio.buscarParada(destino);
 
-            
+
 
             if (paradaOrigen is null | paradaDestino is null)
             {
@@ -56,6 +58,8 @@ namespace AguilaDoradaWeb.Controllers
             }
             else
             {
+                Session.Remove("objetoVenta");
+
                 var listadoServicios = ctx.ServiciosEnVentaGet(fechaLimpia, paradaOrigen.Id, paradaDestino.Id);
 
                 ViewBag.listadoServicios = listadoServicios;
@@ -64,9 +68,22 @@ namespace AguilaDoradaWeb.Controllers
                 int idDestino = paradaDestino.Id;
                 ViewData["idOrigen"] = idOrigen;
                 ViewData["idDestino"] = idDestino;
-            }
 
-        
+                if (Session["objetoVenta"] != null)
+                {
+                    ObjetoVenta objetoVenta = (ObjetoVenta)Session["objetoVenta"];
+                    objetoVenta.fechaViaje = fechaLimpia;
+                    Session["objetoVenta"] = objetoVenta;
+                }
+                else
+                {
+                    objetoVenta.fechaViaje = fechaLimpia;
+                    Session["objetoVenta"] = objetoVenta;
+                }
+
+
+
+            }
             return View();
         }
 
@@ -77,6 +94,35 @@ namespace AguilaDoradaWeb.Controllers
             ViewData["recorridoId"] = recorridoId;
             ViewData["idOrigen"] = idOrigen;
             ViewData["idDestino"] = idDestino;
+
+           
+            if (Session["objetoVenta"] != null)
+            {
+                ObjetoVenta objetoVenta = (ObjetoVenta)Session["objetoVenta"];
+
+                var servicioSeleccioando = ctx.ServiciosEnVentaGet(objetoVenta.fechaViaje, idOrigen, idDestino);
+                foreach(var item in servicioSeleccioando)
+                {
+                    objetoVenta.valorPasaje = item.Precio;
+                }
+                objetoVenta.idOrigen = idOrigen;
+                objetoVenta.idDestino = idDestino;
+                objetoVenta.idRecorrido = recorridoId;
+                Session["objetoVenta"] = objetoVenta;
+            }
+            else
+            {
+                var servicioSeleccioando = ctx.ServiciosEnVentaGet(objetoVenta.fechaViaje, idOrigen, idDestino);
+                foreach (var item in servicioSeleccioando)
+                {
+                    objetoVenta.valorPasaje = item.Precio;
+                    objetoVenta.idServicio = item.ServicioId;
+                }
+                objetoVenta.idOrigen = idOrigen;
+                objetoVenta.idDestino = idDestino;
+                objetoVenta.idRecorrido = recorridoId;
+                Session["objetoVenta"] = objetoVenta;
+            }
 
             ViewBag.listadoAsientos = listadoAsientos;
      
@@ -90,6 +136,7 @@ namespace AguilaDoradaWeb.Controllers
             Session.Remove("listaAsientos");
 
             List<int> listadoAsientos = asientos.asientos_id;
+
 
             Session["listaAsientos"] = listadoAsientos;
 
@@ -143,7 +190,8 @@ namespace AguilaDoradaWeb.Controllers
           
         }
 
-           public ActionResult cargarCliente(Cliente clienteACargar)
+        [HttpPost]
+        public ActionResult cargarCliente(Cliente clienteACargar)
         {
             clienteACargar.Alta = DateTime.Now;
             clienteACargar.TipoDocumentoId = 1;
@@ -169,14 +217,66 @@ namespace AguilaDoradaWeb.Controllers
             return View("cargarPasajeros");
         }
 
+        //var listadoAsientos = ctx.PlantillaHorizontalGet(Id, vehiculoId, recorridoId, idOrigen, idDestino);
 
 
+        public ActionResult GeneradorVenta()
+        {
+
+            if (Session["objetoVenta"] != null)
+            {
+                ObjetoVenta objetoVenta = (ObjetoVenta)Session["objetoVenta"];
+
+                List<Cliente> pasajerosDelViaje = (List<Cliente>)Session["pasajerosDelViaje"];
+                List<int> listaAsientos = (List<int>)Session["listaAsientos"];
+                int cantPasajeros = pasajerosDelViaje.Count;
+                objetoVenta.cantidadPasajeros = cantPasajeros;
+                Cliente primerCliente = pasajerosDelViaje.First();
+                var importeTotal = objetoVenta.valorPasaje * objetoVenta.cantidadPasajeros;
+                Session["objetoVenta"] = objetoVenta;
+
+               // var venta = pasajeServicio.ventaInsert();
+                var venta = ctx.VentaInsert(/*Usuario*/"Local", /*Empleado id*/1, /*Cliente Id*/primerCliente.Id, /*Descuento*/0, /*Bonificacion*/0, /*precioAbs*/importeTotal, /*agenicaId*/1, /*fecha venta*/DateTime.Now, /*importe*/importeTotal,/*abierto 0*/"0",/*con tarjeta importe*/importeTotal,/*tipo desc string*/"nada", /*Canje num*/0).Single();
+            
+                //  CREO UNA LISTA CONJUNTA DE CLIENTES Y ASIENTOS
+                var clientesConAsientos = pasajerosDelViaje.Zip(listaAsientos, (cliente, asiento) => new {idCliente = cliente, idAsiento = asiento });
+
+                foreach (var ca in clientesConAsientos)
+                {
+                    var tickets = ctx.TicketInsert(ca.idAsiento, objetoVenta.idOrigen,objetoVenta.idDestino, objetoVenta.idServicio,DateTime.Now, primerCliente.Id, 1, venta, 1,objetoVenta.idRecorrido,importeTotal,"Test Localhost","Local", "Local",1,1).ToList();
+                }
+
+
+                ctx.SaveChanges();
+            }
+            else
+            {
+                List<Cliente> pasajerosDelViaje = (List<Cliente>)Session["pasajerosDelViaje"];
+                List<int> listaAsientos = (List<int>)Session["listaAsientos"];
+                int cantPasajeros = pasajerosDelViaje.Count;
+                objetoVenta.cantidadPasajeros = cantPasajeros;
+                Cliente primerCliente = pasajerosDelViaje.First();
+                var importeTotal = objetoVenta.valorPasaje * objetoVenta.cantidadPasajeros;
+                Session["objetoVenta"] = objetoVenta;
+
+                var venta = ctx.VentaInsert(/*Usuario*/"Local", /*Empleado id*/1, /*Cliente Id*/primerCliente.Id, /*Descuento*/0, /*Bonificacion*/0, /*precioAbs*/importeTotal, /*agenicaId*/1, /*fecha venta*/DateTime.Now, /*importe*/importeTotal,/*abierto 0*/"0",/*con tarjeta importe*/importeTotal,/*tipo desc string*/"nada", /*Canje num*/0).Single();
+
+                //  CREO UNA LISTA CONJUNTA DE CLIENTES Y ASIENTOS
+                var clientesConAsientos = pasajerosDelViaje.Zip(listaAsientos, (cliente, asiento) => new { idCliente = cliente, idAsiento = asiento });
+
+                foreach (var ca in clientesConAsientos)
+                {
+                    var tickets = ctx.TicketInsert(ca.idAsiento, objetoVenta.idOrigen, objetoVenta.idDestino, objetoVenta.idServicio, DateTime.Now, primerCliente.Id, 1, venta, 1, objetoVenta.idRecorrido, importeTotal, "Test Localhost", "Local", "Local", 1, 1).ToList();
+                }
+
+                ctx.SaveChanges();
+            }
+
+            return View("Pagar");
+        }
 
         public ActionResult Pagar()
         {
-
-           
-
             return View();
         }
         

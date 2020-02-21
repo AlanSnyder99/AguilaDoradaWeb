@@ -459,6 +459,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ListaAsientosDto.cs" />
+    <Compile Include="Models\ObjetoVenta.cs" />
     <Compile Include="Models\ParadaBuscada.cs" />
     <Compile Include="Models\Pasaje.cs" />
     <Compile Include="Models\Pasajero.cs" />
